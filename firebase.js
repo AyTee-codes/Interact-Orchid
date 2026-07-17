@@ -2,6 +2,9 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebas
 
 import { getFirestore } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
+import { getAuth } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyB1aG6QpOj9hPyC_saj_q41t1GGU9uQpkA",
   authDomain: "interact-club-of-orchid.firebaseapp.com",
@@ -12,6 +15,15 @@ const firebaseConfig = {
   measurementId: "G-G0CC8WJXHE"
 };
 
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+
+
+// Firebase services
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+
+// Export for app.js
+export { db, auth };
