@@ -153,32 +153,33 @@ checkAuth();
    
 
     // Login Form Submit Handler
-    window.handleLogin = function(event) {
-        event.preventDefault();
-        if (!siteConfig) return;
+    window.handleLogin = async function(event) {
+    event.preventDefault();
 
-        const typedPassword = loginPassword.value;
-        const correctPassword =
-         siteConfig.branding?.adminPassword || "admin123";
+    const email = document.getElementById("login-email").value;
+    const password = loginPassword.value;
 
-        if (typedPassword === correctPassword) {
-            sessionStorage.setItem('admin_authenticated', 'true');
-            if (loginOverlay) loginOverlay.style.opacity = 0;
-            setTimeout(() => {
-                checkAuth();
-                if (loginOverlay) loginOverlay.style.opacity = 1; // reset for next reload
-            }, 300);
-        } else {
-            // Shake the card and show error
-            const loginCard = document.querySelector('.login-card');
-            loginCard.classList.add('shake');
-            loginError.style.display = 'block';
-            setTimeout(() => {
-                loginCard.classList.remove('shake');
-            }, 400);
-        }
-    };
+    try {
 
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+
+        loginOverlay.style.display = "none";
+        dashboardWrapper.style.display = "block";
+
+    } catch(error) {
+
+        console.error(error);
+
+        loginError.textContent =
+        "Invalid email or password";
+
+        loginError.style.display = "block";
+    }
+};
     // Logout Handler
     window.handleLogout = function() {
         sessionStorage.removeItem('admin_authenticated');
