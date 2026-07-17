@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="site-title">Home | Interact District 3292</title>
+    
+    <!-- Favicon -->
+    <link id="favicon-link" rel="icon" type="image/png" href="https://interactnepal.org/images/favicon.png">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="logo">
+            <img id="nav-logo" src="https://interactnepal.org/images/favicon.png" alt="Interact Logo">
+            <img id="nav-theme-logo" src="https://interactnepal.org/images/theme.png" alt="Theme Logo">
+        </div>
+        <nav>
+            <ul id="desktop-nav-links">
+                <li><a href="#home" class="nav-link active" data-tab="home">Home</a></li>
+                <li><a href="#team" class="nav-link" data-tab="team">Team Members</a></li>
+                <li><a href="#past-bods" class="nav-link" data-tab="past-bods">Past BOD's</a></li>
+                <li><a href="#resources" class="nav-link" data-tab="resources">Resources</a></li>
+                <li><a href="#projects" class="nav-link" data-tab="projects">Projects</a></li>
+                <li><a href="#about" class="nav-link" data-tab="about">About</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <!-- Theme Toggle Switch -->
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox">
+                    <div class="slider">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </div>
+                </label>
+            </div>
+            
+            <i class="fas fa-bars menu-toggle" id="menu-toggle-btn"></i>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#home" class="nav-link active" data-tab="home">Home</a>
+            <a href="#team" class="nav-link" data-tab="team">Team Members</a>
+            <a href="#past-bods" class="nav-link" data-tab="past-bods">Past BOD's</a>
+            <a href="#resources" class="nav-link" data-tab="resources">Resources</a>
+            <a href="#projects" class="nav-link" data-tab="projects">Projects</a>
+            <a href="#about" class="nav-link" data-tab="about">About</a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main>
+
+        <!-- SECTION 1: HOME -->
+        <section id="tab-home" class="tab-section active">
+            <!-- Bold Corporate Hero Block -->
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 id="hero-title">Welcome to Interact District 3292</h1>
+                    <p id="hero-subtitle">Connecting Young Leaders for Change and Service Above Self</p>
+                    <button class="btn btn-primary btn-explore" onclick="switchTab('about')"><i class="fas fa-search"></i> Explore Our Mission</button>
+                    
+                </div>
+            </div>
+
+            <!-- Stats Highlight Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-building-flag"></i></div>
+                    <h3>120+</h3>
+                    <p>Active Clubs</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-users-line"></i></div>
+                    <h3>5,000+</h3>
+                    <p>Interactors</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h3>1,000+</h3>
+                    <p>Annual Projects</p>
+                </div>
+            </div>
+
+            <!-- Short Promo Section -->
+            <div class="home-promo-section">
+                <div class="promo-content">
+                    <h2>Excellence. Leadership. Service.</h2>
+                    <p>Interact is a club for young people ages 12-18 who want to join together to tackle the issues in their community that they care most about. Through service projects, Interactors build leadership skills, make new friends, and learn about the world.</p>
+                    <button class="btn btn-secondary" onclick="switchTab('team')"><i class="fas fa-users"></i> Meet Our Team</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: TEAM MEMBERS -->
+        <section id="tab-team" class="tab-section">
+            <div class="page-header">
+                <h1><span>Team Members</span></h1>
+            </div>
+
+            <!-- Search and Filter Section -->
+            <div class="dashboard-controls">
+                <div class="search-bar-wrapper">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" class="search-input" placeholder="Search by name, role, or club...">
+                </div>
+                <div class="filters-wrapper">
+                    <span class="filter-label">Filter by Zone:</span>
+                    <div id="filter-pills" class="filters-wrapper">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="District">District Officers</button>
+                        <button class="filter-btn" data-filter="Zone 1">Zone 1</button>
+                        <button class="filter-btn" data-filter="Zone 2">Zone 2</button>
+                        <button class="filter-btn" data-filter="Zone 3">Zone 3</button>
+                        <button class="filter-btn" data-filter="Zone 4">Zone 4</button>
+                        <button class="filter-btn" data-filter="Zone 5">Zone 5</button>
+                        <button class="filter-btn" data-filter="Zone 6">Zone 6</button>
+                        <button class="filter-btn" data-filter="Zone 7">Zone 7</button>
+                        <button class="filter-btn" data-filter="Zone 8">Zone 8</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Members Grid -->
+            <div class="team-cards" id="team-grid">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </section>
+
+        <!-- SECTION 3: PAST BOD's -->
+        <section id="tab-past-bods" class="tab-section">
+            <div class="page-header">
+                <h1><span>Past BOD's</span></h1>
+            </div>
+            
+            <div class="timeline-container" id="past-bods-timeline">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </section>
+
+        <!-- SECTION 4: RESOURCES -->
+        <section id="tab-resources" class="tab-section">
+            <div class="page-header">
+                <h1><span>Resources</span></h1>
+            </div>
+            
+            <div class="resources-grid" id="resources-container">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </section>
+
+        <!-- SECTION 5: PROJECTS -->
+        <section id="tab-projects" class="tab-section">
+            <div class="page-header">
+                <h1><span>District Projects</span></h1>
+            </div>
+            
+            <div class="projects-grid" id="projects-container">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </section>
+
+        <!-- SECTION 6: ABOUT -->
+        <section id="tab-about" class="tab-section">
+            <div class="page-header">
+                <h1><span>About Us</span></h1>
+            </div>
+
+            <div class="about-container">
+                <div class="about-text">
+                    <h2>Interact District 3292, Nepal</h2>
+                    <p>
+                        Interact District 3292 is a thriving youth service community under Rotary District 3292 (Nepal & Bhutan). With over 120 clubs spanning school and community environments, we empower thousands of young leaders to build skills, shape legacies, and dedicate themselves to impactful community projects.
+                    </p>
+                    <h3>Our Mission</h3>
+                    <p>To foster leadership, build international understanding, and drive local community service by empowering youth to implement purposeful and sustainable projects.</p>
+                    
+                    <h3>Our Vision</h3>
+                    <p>To develop a generation of empathetic, capable, and united youth leaders whose actions shape a positive legacy for society.</p>
+                </div>
+                <div class="about-media-box">
+                    <img id="about-theme-img" src="https://interactnepal.org/images/theme.png" alt="Theme">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Details View Modal -->
+    <div class="modal-overlay" id="profile-modal">
+        <div class="modal-container">
+            <button class="modal-close" id="modal-close-btn"><i class="fas fa-times"></i></button>
+            <div class="modal-body" id="modal-content">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img id="footer-logo" src="https://interactnepal.org/images/theme.png" alt="Thematic Logo" class="footer-logo">
+            </div>
+            <div class="footer-info">
+                <h3 id="footer-text-heading">Excellence Shapes Legacy</h3>
+                <p class="footer-description" id="footer-text-desc">
+                   The theme Excellence Shapes Legacy represents a commitment to pursuing excellence in every action, decision, and service. It inspires every Interactor to lead with integrity, embrace continuous growth, and create a lasting impact that extends beyond their tenure.
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026/27 - <span id="footer-site-name">Interact District 3292</span>. All Rights Reserved.</p>
+            <p>Service Above Self</p>
+        </div>
+    </footer>
+
+    <!-- App Script -->
+     <script type="module" src="app.js"></script>
+</body>
+</html>

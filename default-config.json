@@ -1,0 +1,476 @@
+{
+  "branding": {
+    "siteName": "Interact District 3292",
+    "logoUrl": "https://interactnepal.org/images/favicon.png",
+    "themeLogoUrl": "https://interactnepal.org/images/theme.png",
+    "primaryColor": "#0C2340",
+    "accentColor": "#00A3E0",
+    "goldColor": "#F39C12",
+    "adminPassword": "admin123",
+    "footerText": "Excellence Shapes Legacy",
+    "footerDesc": "The theme Excellence Shapes Legacy represents a commitment to pursuing excellence in every action, decision, and service. It inspires every Interactor to lead with integrity, embrace continuous growth, and create a lasting impact that extends beyond their tenure."
+  },
+  "members": [
+    {
+      "id": "member-1",
+      "name": "Itr. Sakshyam Baniya",
+      "post": "District Interact Representative",
+      "club": "Interact Club of Little Flower",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/sakshyam.baniya",
+      "instagram": "https://www.instagram.com/sakshyam_b/",
+      "phone": "9824240651",
+      "email": "ic.sakshyam@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4f588a7cf3e.jpg"
+    },
+    {
+      "id": "member-2",
+      "name": "Itr. Sushan Adhikari",
+      "post": "Immediate Past District Interact Representative",
+      "club": "Interact Club of Narayangarh",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/susan.adhikari.7370",
+      "instagram": "https://www.instagram.com/sushanadhikari1/",
+      "phone": "9861289296",
+      "email": "dirsushan3292@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4f7fc2c9930.jpg"
+    },
+    {
+      "id": "member-3",
+      "name": "Itr. Aarya Pandit",
+      "post": "Assistant District Interact Representative",
+      "club": "Interact Club of Evergreen",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/aar.ya.333347",
+      "instagram": "https://www.instagram.com/_aareeyah/",
+      "phone": "9813203875",
+      "email": "aaryapandit@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4f804052f3b.jpg"
+    },
+    {
+      "id": "member-4",
+      "name": "Itr. Samriddhi Basyal",
+      "post": "District Secretary",
+      "club": "Interact Club of Oxford",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/samm.basyal",
+      "instagram": "https://www.instagram.com/itr.samriddhibasyal/",
+      "phone": "9768553632",
+      "email": "itr.samriddhibasyal@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4f80c6e0701.jpg"
+    },
+    {
+      "id": "member-5",
+      "name": "Itr. Pramoditti Pokharel",
+      "post": "Assistant District Secretary",
+      "club": "Interact Club of Lalitpur",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/pramoditti.pokharel.2025",
+      "instagram": "https://www.instagram.com/__.dittee__/",
+      "phone": "9769687483",
+      "email": "pokharelpramoditti3@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4f81591f25b.jpg"
+    },
+    {
+      "id": "member-6",
+      "name": "Itr. Rohan Sapkota",
+      "post": "District Treasurer",
+      "club": "Interact Club of Narayangarh",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/sapkota.rohan09",
+      "instagram": "https://www.instagram.com/rohansapkota_0/",
+      "phone": "9810378082",
+      "email": "rohansapkota3@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4f823738e7a.jpg"
+    },
+    {
+      "id": "member-7",
+      "name": "Itr. Bishow Panthi",
+      "post": "Zonal Planner",
+      "club": "Interact Club of Central Butwal",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/bishow.panthi.2025",
+      "instagram": "https://www.instagram.com/bishowpanthi/",
+      "phone": "9764677475",
+      "email": "bishowpanthi33@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4f82ae5808f.jpg"
+    },
+    {
+      "id": "member-8",
+      "name": "Itr. Mingsang Limbu",
+      "post": "Zonal Interact Representative - Zone 1",
+      "club": "Interact Club of Bishnu Memorial",
+      "zone": "Zone 1",
+      "facebook": "https://www.facebook.com/mingsanglimbu.7",
+      "instagram": "https://www.instagram.com/__yovel/",
+      "phone": "9819334600",
+      "email": "mingsanglimbu@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4f83245c097.png"
+    },
+    {
+      "id": "member-9",
+      "name": "Itr. Dipsan Pokhrel",
+      "post": "Zonal Interact Representative - Zone 2",
+      "club": "Interact Club of Little Flower",
+      "zone": "Zone 2",
+      "facebook": "https://www.facebook.com/dipsan.pokhrel.2025",
+      "instagram": "https://www.instagram.com/dipsan.pokhrel/",
+      "phone": "9845220330",
+      "email": "dipsanpokhrel21@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4f83ec9b111.png"
+    },
+    {
+      "id": "member-10",
+      "name": "Itr. Nirdesh Bastola",
+      "post": "Zonal Interact Representative - Zone 3",
+      "club": "Interact Club of Pokhara Lakeside",
+      "zone": "Zone 3",
+      "facebook": "https://www.facebook.com/banstola.nobaraj",
+      "instagram": "https://www.instagram.com/nirdesh.8848/",
+      "phone": "9806712390",
+      "email": "itrnirdesh@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4f845cf2fc2.jpg"
+    },
+    {
+      "id": "member-11",
+      "name": "Itr. Bidhan Bhandari",
+      "post": "Zonal Interact Representative - Zone 4",
+      "club": "Interact Club of Central Butwal",
+      "zone": "Zone 4",
+      "facebook": "https://www.facebook.com/bidhan.bhandari.180",
+      "instagram": "https://www.instagram.com/bidhan4607/",
+      "phone": "9848497956",
+      "email": "itr.bidhanbhandari@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4f8576c84fa.jpg"
+    },
+    {
+      "id": "member-12",
+      "name": "Itr. Subarna Kandel",
+      "post": "Zonal Interact Representative - Zone 5",
+      "club": "Interact Club of Gorkha",
+      "zone": "Zone 5",
+      "facebook": "https://www.facebook.com/profile.php?id=61590707052301",
+      "instagram": "https://www.instagram.com/subarna.kdl/",
+      "phone": "9823897281",
+      "email": "subarnakandel21@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4f85fc71135.jpg"
+    },
+    {
+      "id": "member-13",
+      "name": "Itr. Aaryaman Pandit",
+      "post": "Zonal Interact Representative - Zone 6",
+      "club": "Interact Club of Evergreen",
+      "zone": "Zone 6",
+      "facebook": "https://www.facebook.com/aaryaman.pandit.3",
+      "instagram": "https://www.instagram.com/aar_eman/",
+      "phone": "9761508713",
+      "email": "aarayamanpandit123@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4f865be9c23.png"
+    },
+    {
+      "id": "member-14",
+      "name": "Itr. Sushmita Karki",
+      "post": "Zonal Interact Representative - Zone 7",
+      "club": "Interact club of Advanced Academy",
+      "zone": "Zone 7",
+      "facebook": "https://www.facebook.com/ambika.ambikakarki.1",
+      "instagram": "https://www.instagram.com/susmi_2k2/",
+      "phone": "9849427707",
+      "email": "ak8163854@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4f874871f99.jpg"
+    },
+    {
+      "id": "member-15",
+      "name": "Itr. Abhilasha Gorkhalee",
+      "post": "Zonal Interact Representative - Zone 8",
+      "club": "Interact Club of Rato Bangala School",
+      "zone": "Zone 8",
+      "facebook": "https://www.facebook.com/abhilasha.gorkhalee",
+      "instagram": "https://www.instagram.com/gorkhalee_abhilasha/",
+      "phone": "9828695334",
+      "email": "gorkhaleeabhilasha@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4f8807c6d1c.png"
+    },
+    {
+      "id": "member-16",
+      "name": "Itr. Subigya Godi",
+      "post": "District Editor",
+      "club": "Interact Club of British Model College",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/profile.php?id=61591163671505",
+      "instagram": "https://www.instagram.com/su.has.no_idea/",
+      "phone": "9763680630",
+      "email": "subigya.godi@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4fa914415e0.jpg"
+    },
+    {
+      "id": "member-17",
+      "name": "Itr. Divya Parajuli",
+      "post": "District Editor",
+      "club": "Interact Club of Pokhara Lakeside",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/notzia.v",
+      "instagram": "https://www.instagram.com/notzia.v/",
+      "phone": "9867737675",
+      "email": "ziaparajuli@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a5681d7d3f2f.jpg"
+    },
+    {
+      "id": "member-18",
+      "name": "Itr. Mridul Jung Pande",
+      "post": "District Club Service Committee Chair",
+      "club": "Interact Club of Pokhara Lakeside",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/mridul.jung.pande",
+      "instagram": "https://www.instagram.com/mridul_jp/",
+      "phone": "9769210610",
+      "email": "mriduljungpande0095@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4fa8936a1ef.jpg"
+    },
+    {
+      "id": "member-19",
+      "name": "Itr. Kavya Bhattarai",
+      "post": "District Community Service Committee Chair",
+      "club": "Interact Club of New Road City Kathmandu",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/profile.php?id=61577628276341",
+      "instagram": "https://www.instagram.com/kavya_j13/",
+      "phone": "9845879552",
+      "email": "kavyabhattarai14@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4fab420cbdd.jpg"
+    },
+    {
+      "id": "member-20",
+      "name": "Itr. Suman Bhattarai",
+      "post": "District Professional Service Committee Chair",
+      "club": "Interact Club of Central Butwal",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/suman.bhattarai.249972",
+      "instagram": "https://www.instagram.com/suman_bhattarai__/",
+      "phone": "9747377820",
+      "email": "itr.sumanbhattarai@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4fcbb1b2e78.jpg"
+    },
+    {
+      "id": "member-21",
+      "name": "Itr. Bidhata Thapa",
+      "post": "District Chief International Relations Officer",
+      "club": "Interact Club of Central Butwal",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/bidhata.thapa.33",
+      "instagram": "https://www.instagram.com/bidhata.thapa/",
+      "phone": "9764326670",
+      "email": "binut309@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4fcce749109.jpg"
+    },
+    {
+      "id": "member-22",
+      "name": "Itr. Anmol Gurung",
+      "post": "District Event Management Chair",
+      "club": "Interact Club of New Road City Kathmandu",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/yatrw.gurung",
+      "instagram": "https://www.instagram.com/astonishing_foe/",
+      "phone": "9867737675",
+      "email": "anmol@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4fd127852ff.jpg"
+    },
+    {
+      "id": "member-23",
+      "name": "Itr. Aditi Parajuli",
+      "post": "District Public Image Chair",
+      "club": "Interact Club of Pokhara Lakeside",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/adt.parajuli",
+      "instagram": "https://www.instagram.com/ade_tee55/",
+      "phone": "9814131299",
+      "email": "dtwrites10@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4fcc503317c.jpg"
+    },
+    {
+      "id": "member-24",
+      "name": "Itr. Aaryashree Lamichhane",
+      "post": "District Government School Support Committee Chair",
+      "club": "Interact Club of Valmiki",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/aaryashree.lamichhane",
+      "instagram": "https://www.instagram.com/_aaryashreee_/",
+      "phone": "9848662307",
+      "email": "aaryashreelamichhane08@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4fca24c1df6.jpg"
+    },
+    {
+      "id": "member-25",
+      "name": "Itr. Nischal Gautam",
+      "post": "District Club Service Committee Officer",
+      "club": "Interact Club of Central Butwal",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/nischall.g",
+      "instagram": "https://www.instagram.com/neeschal.g/",
+      "phone": "9860720651",
+      "email": "itrnischal658@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4fa9cb78537.png"
+    },
+    {
+      "id": "member-26",
+      "name": "Itr. Simla Dhital",
+      "post": "District Community Service Committee Officer",
+      "club": "Interact Club Of Peacezone",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/profile.php?id=61578379499877",
+      "instagram": "https://www.instagram.com/almis.vx/",
+      "phone": "9852083099",
+      "email": "simladhital1@gmail.com",
+      "image": "https://interactnepal.org/adminration/uploads_team/team_6a4fac3740062.jpeg"
+    },
+    {
+      "id": "member-27",
+      "name": "Itr. Prabesh Basnet",
+      "post": "District Information Technology Officer",
+      "club": "Interact Club of Narayangarh",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/profile.php?id=100087559956055",
+      "instagram": "https://www.instagram.com/prabesh_110x/",
+      "phone": "9813394042",
+      "email": "prabeshjungbasnet99@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4fcd600e788.png"
+    },
+    {
+      "id": "member-28",
+      "name": "Itr. Sanjog Kandel",
+      "post": "District Information Technology Officer",
+      "club": "Interact Club of Orchid",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/sanjog.kandel.2025",
+      "instagram": "https://www.instagram.com/mesanjog_77/",
+      "phone": "9767219561",
+      "email": "sanjogkandel777@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4fce2817d9e.jpg"
+    },
+    {
+      "id": "member-29",
+      "name": "Itr. Manjil Aryal",
+      "post": "District Information Technology Officer",
+      "club": "Interact Club of Pokhara Lakeside",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/manjil.aryal.494391",
+      "instagram": "https://www.instagram.com/manjilaryal7/",
+      "phone": "9814146749",
+      "email": "manjilaryal2@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4fce8c4d3a7.jpg"
+    },
+    {
+      "id": "member-30",
+      "name": "Itr. Abhiyan Basel",
+      "post": "District Media Crew",
+      "club": "Interact Club of Narayangarh",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/abhiyan.bashel",
+      "instagram": "https://www.instagram.com/abhiyan_basel/",
+      "phone": "9742864431",
+      "email": "baselabhiyan18@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4fced86b11e.jpg"
+    },
+    {
+      "id": "member-31",
+      "name": "Itr. Dizen Shrestha",
+      "post": "District Sergeant At Arms",
+      "club": "Interact Club of Lalitpur",
+      "zone": "District",
+      "facebook": "https://www.facebook.com/dizen.shrestha.90",
+      "instagram": "https://www.instagram.com/dize_n7/",
+      "phone": "9764612144",
+      "email": "cresthadizen@gmail.com",
+      "image": "https://interactnepal.org/adminstration/uploads_team/team_6a4fd043255d0.jpg"
+    }
+  ],
+  "leaders": [
+    {
+      "id": "leader-1",
+      "year": "2025/26",
+      "name": "Itr. Sakshyam Baniya",
+      "club": "Interact Club of Little Flower",
+      "theme": "Excellence Shapes Legacy"
+    },
+    {
+      "id": "leader-2",
+      "year": "2024/25",
+      "name": "Itr. Sushan Adhikari",
+      "club": "Interact Club of Narayangarh",
+      "theme": "Lead to Inspire"
+    },
+    {
+      "id": "leader-3",
+      "year": "2023/24",
+      "name": "Itr. Subrina Bhandari",
+      "club": "Interact Club of Oxford",
+      "theme": "Empower, Excel, Elevate"
+    },
+    {
+      "id": "leader-4",
+      "year": "2022/23",
+      "name": "Itr. Pranish Khadka",
+      "club": "Interact Club of Central Butwal",
+      "theme": "Be the Inspiration"
+    },
+    {
+      "id": "leader-5",
+      "year": "2021/22",
+      "name": "Itr. Avash Pyakurel",
+      "club": "Interact Club of Evergreen",
+      "theme": "Lead the Way"
+    }
+  ],
+  "resources": [
+    {
+      "id": "res-1",
+      "title": "District Interact Bylaws & Constitution",
+      "type": "PDF Document",
+      "link": "#"
+    },
+    {
+      "id": "res-2",
+      "title": "Interact Club Guidebook (Rotary International)",
+      "type": "Manual Link",
+      "link": "#"
+    },
+    {
+      "id": "res-3",
+      "title": "Public Image Guidelines & Branding Assets Pack",
+      "type": "ZIP Archive",
+      "link": "#"
+    },
+    {
+      "id": "res-4",
+      "title": "Monthly Club Activity Report Form (Excel Template)",
+      "type": "XLSX Template",
+      "link": "#"
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-1",
+      "title": "National Interact Service Day",
+      "club": "District 3292 Joint Committee",
+      "date": "November 2025",
+      "desc": "A coordinated nationwide campaign where 50+ clubs across Nepal engaged in joint community service projects targeting sanitation, health, and local literacy support.",
+      "image": "https://interactnepal.org/images/theme.png"
+    },
+    {
+      "id": "proj-2",
+      "title": "Warmth For All: Winter Clothing Drive",
+      "club": "Interact Club of Oxford",
+      "date": "December 2025",
+      "desc": "Collected and distributed clean blankets, warm coats, and thermals to over 150 low-income families and children residing in cold-affected areas.",
+      "image": "https://interactnepal.org/images/theme.png"
+    },
+    {
+      "id": "proj-3",
+      "title": "E-Learning Center Setup",
+      "club": "Interact Club of Narayangarh",
+      "date": "January 2026",
+      "desc": "Collaborated with local sponsors to install 5 computers, reference digital libraries, and establish internet access in a community secondary school.",
+      "image": "https://interactnepal.org/images/theme.png"
+    }
+  ]
+}

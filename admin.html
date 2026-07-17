@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Interact District 3292</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://interactnepal.org/images/favicon.png">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">Branding updated successfully!</div>
+
+    <!-- Login Overlay Screen -->
+    <div id="login-overlay" class="login-overlay">
+        <div class="login-card">
+            <div class="login-header">
+                <img src="https://interactnepal.org/images/favicon.png" alt="Logo">
+                <h2>Portal Admin Authentication</h2>
+                <p>This area is restricted. Enter password to gain dashboard access.</p>
+            </div>
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="login-password">Administrative Password</label>
+                    <input type="password" id="login-password" placeholder="••••••••" required>
+                </div>
+                <div id="login-error" class="login-error-msg">
+                    <i class="fas fa-exclamation-circle"></i> Invalid administrative password.
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 15px;">
+                    <i class="fas fa-sign-in-alt"></i> Authenticate
+                </button>
+            </form>
+            <div class="login-footer">
+                <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Public Portal</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Wrapper (Revealed only upon successful auth) -->
+    <div id="dashboard-wrapper" style="display: none;">
+        
+        <!-- Dashboard Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-brand">
+                <img src="https://interactnepal.org/images/favicon.png" alt="Logo">
+                <h2>Portal <span>Admin</span></h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="sidebar-item active" data-target="branding-sec">
+                    <a href="#"><i class="fas fa-palette"></i> <span>Branding & Colors</span></a>
+                </li>
+                <li class="sidebar-item" data-target="members-sec">
+                    <a href="#"><i class="fas fa-users"></i> <span>Team Members</span></a>
+                </li>
+                <li class="sidebar-item" data-target="leaders-sec">
+                    <a href="#"><i class="fas fa-history"></i> <span>Past BOD's</span></a>
+                </li>
+                <li class="sidebar-item" data-target="resources-sec">
+                    <a href="#"><i class="fas fa-folder-open"></i> <span>Resources</span></a>
+                </li>
+                <li class="sidebar-item" data-target="projects-sec">
+                    <a href="#"><i class="fas fa-image"></i> <span>Projects</span></a>
+                </li>
+                <li class="sidebar-item" data-target="sync-sec">
+                    <a href="#"><i class="fas fa-sync-alt"></i> <span>Import & Export</span></a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <!-- Log Out Button -->
+                <button class="view-live-btn" onclick="handleLogout()" style="background: none; border: 1px solid rgba(255,255,255,0.2); width: 100%; cursor: pointer; text-align: left; margin-bottom: 8px;">
+                    <i class="fas fa-sign-out-alt"></i> <span>Log Out</span>
+                </button>
+                <a href="index.html" class="view-live-btn"><i class="fas fa-external-link-alt"></i> <span>View Portal</span></a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="dashboard-header">
+                <div>
+                    <h1 id="header-section-title">Branding & Colors</h1>
+                    <p id="header-section-desc">Manage site identity, theme colors, logos, and footer information.</p>
+                </div>
+                <div>
+                    <button class="btn btn-secondary" onclick="restoreDefaults()"><i class="fas fa-undo"></i> Restore Defaults</button>
+                </div>
+            </div>
+
+            <!-- SECTION 1: BRANDING & COLORS -->
+            <div id="branding-sec" class="dashboard-section active">
+                <form id="branding-form" onsubmit="saveBranding(event)">
+                    <div class="admin-card">
+                        <div class="admin-card-title">
+                            <span>Identity Configuration</span>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="brand-sitename">Website Title</label>
+                                <input type="text" id="brand-sitename" placeholder="e.g. Interact District 3292" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="brand-logourl">Logo URL</label>
+                                <input type="text" id="brand-logourl" placeholder="https://url-to-logo.png" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="brand-themelogourl">Theme Logo URL</label>
+                                <input type="text" id="brand-themelogourl" placeholder="https://url-to-thematic-logo.png" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin-card">
+                        <div class="admin-card-title">
+                            <span>Theme Color System</span>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Primary Blue (Corporate)</label>
+                                <div class="color-picker-container">
+                                    <div class="color-input-wrapper">
+                                        <input type="color" id="color-primary" value="#0C2340" oninput="document.getElementById('color-primary-text').value = this.value">
+                                    </div>
+                                    <input type="text" id="color-primary-text" value="#0C2340" style="width: 100px;" onchange="document.getElementById('color-primary').value = this.value">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Accent Blue (Interact Sky)</label>
+                                <div class="color-picker-container">
+                                    <div class="color-input-wrapper">
+                                        <input type="color" id="color-accent" value="#00A3E0" oninput="document.getElementById('color-accent-text').value = this.value">
+                                    </div>
+                                    <input type="text" id="color-accent-text" value="#00A3E0" style="width: 100px;" onchange="document.getElementById('color-accent').value = this.value">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Gold Accent</label>
+                                <div class="color-picker-container">
+                                    <div class="color-input-wrapper">
+                                        <input type="color" id="color-gold" value="#F39C12" oninput="document.getElementById('color-gold-text').value = this.value">
+                                    </div>
+                                    <input type="text" id="color-gold-text" value="#F39C12" style="width: 100px;" onchange="document.getElementById('color-gold').value = this.value">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin-card">
+                        <div class="admin-card-title">
+                            <span>Security Credentials</span>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="brand-password">Dashboard Password</label>
+                                <input type="text" id="brand-password" placeholder="Change administrator password" required>
+                                <span class="upload-tip">Default: admin123. Keep this safe. Changes apply to subsequent log-ins.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin-card">
+                        <div class="admin-card-title">
+                            <span>Footer Documentation</span>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label for="brand-footertext">Footer Headline Theme</label>
+                                <input type="text" id="brand-footertext" placeholder="e.g. Excellence Shapes Legacy" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="brand-footerdesc">Theme Description / Statement</label>
+                                <textarea id="brand-footerdesc" rows="4" placeholder="Briefly describe the district theme..." required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-actions-row">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Branding Changes</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- SECTION 2: TEAM MEMBERS -->
+            <div id="members-sec" class="dashboard-section">
+                <div class="admin-card">
+                    <div class="admin-card-title">
+                        <span>Active Member Directory</span>
+                        <button class="btn btn-primary" onclick="openMemberModal('add')"><i class="fas fa-plus"></i> Add New Member</button>
+                    </div>
+                    
+                    <div class="team-table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name & Profile</th>
+                                    <th>Position / Post</th>
+                                    <th>Interact Club</th>
+                                    <th>Zone</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="member-table-rows">
+                                <!-- Populated dynamically via admin.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 3: PAST BOD's -->
+            <div id="leaders-sec" class="dashboard-section">
+                <div class="admin-card">
+                    <div class="admin-card-title">
+                        <span>Past District Representatives (Timeline)</span>
+                        <button class="btn btn-primary" onclick="openLeaderModal('add')"><i class="fas fa-plus"></i> Add Past Leader</button>
+                    </div>
+                    
+                    <div class="team-table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tenure Year</th>
+                                    <th>Full Name</th>
+                                    <th>Home Interact Club</th>
+                                    <th>District Theme Statement</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leader-table-rows">
+                                <!-- Populated dynamically via admin.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 4: RESOURCES -->
+            <div id="resources-sec" class="dashboard-section">
+                <div class="admin-card">
+                    <div class="admin-card-title">
+                        <span>Resource File Downloads</span>
+                        <button class="btn btn-primary" onclick="openResourceModal('add')"><i class="fas fa-plus"></i> Add New Resource</button>
+                    </div>
+                    
+                    <div class="team-table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Resource Title</th>
+                                    <th>Category Type</th>
+                                    <th>Resource Link / URL</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="resource-table-rows">
+                                <!-- Populated dynamically via admin.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 5: PROJECTS -->
+            <div id="projects-sec" class="dashboard-section">
+                <div class="admin-card">
+                    <div class="admin-card-title">
+                        <span>District Service Projects</span>
+                        <button class="btn btn-primary" onclick="openProjectModal('add')"><i class="fas fa-plus"></i> Add New Project</button>
+                    </div>
+                    
+                    <div class="team-table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Project Title</th>
+                                    <th>Managing Club</th>
+                                    <th>Project Date</th>
+                                    <th>Brief Summary</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="project-table-rows">
+                                <!-- Populated dynamically via admin.js -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 6: IMPORT & EXPORT -->
+            <div id="sync-sec" class="dashboard-section">
+                <div class="admin-card">
+                    <div class="admin-card-title">
+                        <span>Configuration Portability Portal</span>
+                    </div>
+                    
+                    <div class="io-grid">
+                        <div class="io-box">
+                            <i class="fas fa-file-download"></i>
+                            <h4>Export Configuration</h4>
+                            <p>Download your complete branding settings, members roster, past BOD list, resources catalog, and projects list as a single JSON file.</p>
+                            <button class="btn btn-success" onclick="exportConfig()"><i class="fas fa-download"></i> Download interact-config.json</button>
+                        </div>
+                        
+                        <div class="io-box">
+                            <i class="fas fa-file-upload"></i>
+                            <h4>Import Configuration</h4>
+                            <p>Upload an exported configuration JSON file. This will override all branding settings and replace your entire database.</p>
+                            <div class="file-input-wrapper">
+                                <input type="file" id="import-file" accept=".json" onchange="importConfig(event)">
+                            </div>
+                            <div class="upload-tip">Requires a valid format matching the export schema.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL 1: MEMBER CRUD MODAL -->
+        <div class="modal-overlay" id="member-modal">
+            <div class="modal-container">
+                <div class="modal-header">
+                    <h3 id="modal-form-title">Add Team Member</h3>
+                    <button class="modal-close-btn" onclick="closeMemberModal()"><i class="fas fa-times"></i></button>
+                </div>
+                <form id="member-form" onsubmit="saveMember(event)">
+                    <input type="hidden" id="member-id">
+                    
+                    <div class="image-upload-wrapper" style="margin-bottom: 20px;">
+                        <div class="image-preview-box" id="member-preview-box">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="upload-actions">
+                            <label for="member-file" class="upload-btn-label"><i class="fas fa-image"></i> Upload Photo</label>
+                            <input type="file" id="member-file" accept="image/*" onchange="handleMemberPhotoUpload(event)">
+                            <input type="text" id="member-imgurl" placeholder="Or enter Image URL" style="margin-top: 8px; width: 100%;" oninput="updateMemberPhotoPreview(this.value)">
+                            <span class="upload-tip">Recommended: Portrait aspect ratio (3:4)</span>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="member-name">Full Name</label>
+                            <input type="text" id="member-name" placeholder="e.g. Itr. Sakshyam Baniya" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="member-post">Position / Role</label>
+                            <input type="text" id="member-post" placeholder="e.g. District Secretary" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="member-club">Interact Club</label>
+                            <input type="text" id="member-club" placeholder="e.g. Interact Club of Oxford" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="member-zone">Zone Category</label>
+                            <select id="member-zone" required>
+                                <option value="District">District Officer</option>
+                                <option value="Zone 1">Zone 1</option>
+                                <option value="Zone 2">Zone 2</option>
+                                <option value="Zone 3">Zone 3</option>
+                                <option value="Zone 4">Zone 4</option>
+                                <option value="Zone 5">Zone 5</option>
+                                <option value="Zone 6">Zone 6</option>
+                                <option value="Zone 7">Zone 7</option>
+                                <option value="Zone 8">Zone 8</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="member-phone">Phone Number</label>
+                            <input type="tel" id="member-phone" placeholder="e.g. 9824240651">
+                        </div>
+                        <div class="form-group">
+                            <label for="member-email">Email Address</label>
+                            <input type="email" id="member-email" placeholder="e.g. user@gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="member-fb">Facebook URL</label>
+                            <input type="text" id="member-fb" placeholder="https://www.facebook.com/username">
+                        </div>
+                        <div class="form-group">
+                            <label for="member-ig">Instagram URL</label>
+                            <input type="text" id="member-ig" placeholder="https://www.instagram.com/username">
+                        </div>
+                    </div>
+
+                    <div class="btn-actions-row" style="margin-top: 25px;">
+                        <button type="button" class="btn btn-secondary" onclick="closeMemberModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="member-submit-btn">Add Member</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- MODAL 2: LEADER CRUD MODAL -->
+        <div class="modal-overlay" id="leader-modal">
+            <div class="modal-container">
+                <div class="modal-header">
+                    <h3 id="leader-form-title">Add Past Leader</h3>
+                    <button class="modal-close-btn" onclick="closeLeaderModal()"><i class="fas fa-times"></i></button>
+                </div>
+                <form id="leader-form" onsubmit="saveLeader(event)">
+                    <input type="hidden" id="leader-id">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="leader-year">Tenure Year</label>
+                            <input type="text" id="leader-year" placeholder="e.g. 2024/25" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="leader-name">Representative Name</label>
+                            <input type="text" id="leader-name" placeholder="e.g. Itr. Sushan Adhikari" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="leader-club">Home Interact Club</label>
+                            <input type="text" id="leader-club" placeholder="e.g. Interact Club of Narayangarh" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="leader-theme">District Theme Statement</label>
+                            <input type="text" id="leader-theme" placeholder="e.g. Lead to Inspire">
+                        </div>
+                    </div>
+                    <div class="btn-actions-row" style="margin-top: 25px;">
+                        <button type="button" class="btn btn-secondary" onclick="closeLeaderModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="leader-submit-btn">Add Leader</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- MODAL 3: RESOURCE CRUD MODAL -->
+        <div class="modal-overlay" id="resource-modal">
+            <div class="modal-container">
+                <div class="modal-header">
+                    <h3 id="resource-form-title">Add Resource File</h3>
+                    <button class="modal-close-btn" onclick="closeResourceModal()"><i class="fas fa-times"></i></button>
+                </div>
+                <form id="resource-form" onsubmit="saveResource(event)">
+                    <input type="hidden" id="resource-id">
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="resource-title">Resource File Title</label>
+                            <input type="text" id="resource-title" placeholder="e.g. District Interact Bylaws" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="resource-type">Category Type Badge</label>
+                            <select id="resource-type" required>
+                                <option value="PDF Document">PDF Document</option>
+                                <option value="ZIP Archive">ZIP Archive</option>
+                                <option value="XLSX Template">XLSX Template</option>
+                                <option value="Manual Link">Manual Link</option>
+                                <option value="Website Link">Website Link</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="resource-link">File / Access URL Link</label>
+                            <input type="text" id="resource-link" placeholder="https://url-to-file.pdf" required>
+                        </div>
+                    </div>
+                    <div class="btn-actions-row" style="margin-top: 25px;">
+                        <button type="button" class="btn btn-secondary" onclick="closeResourceModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="resource-submit-btn">Add Resource</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- MODAL 4: PROJECT CRUD MODAL -->
+        <div class="modal-overlay" id="project-modal">
+            <div class="modal-container">
+                <div class="modal-header">
+                    <h3 id="project-form-title">Add District Project</h3>
+                    <button class="modal-close-btn" onclick="closeProjectModal()"><i class="fas fa-times"></i></button>
+                </div>
+                <form id="project-form" onsubmit="saveProject(event)">
+                    <input type="hidden" id="project-id">
+                    
+                    <div class="image-upload-wrapper" style="margin-bottom: 20px;">
+                        <div class="image-preview-box" id="project-preview-box">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <div class="upload-actions">
+                            <label for="project-file" class="upload-btn-label"><i class="fas fa-image"></i> Upload Photo</label>
+                            <input type="file" id="project-file" accept="image/*" onchange="handleProjectPhotoUpload(event)">
+                            <input type="text" id="project-imgurl" placeholder="Or enter Image URL" style="margin-top: 8px; width: 100%;" oninput="updateProjectPhotoPreview(this.value)">
+                            <span class="upload-tip">Recommended: Landscape aspect ratio (16:9)</span>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="project-title">Project Name</label>
+                            <input type="text" id="project-title" placeholder="e.g. Warmth For All Campaign" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="project-club">Managing Club / Committee</label>
+                            <input type="text" id="project-club" placeholder="e.g. Interact Club of Oxford" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="project-date">Execution Date</label>
+                            <input type="text" id="project-date" placeholder="e.g. December 2025" required>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 15px;">
+                        <label for="project-desc">Brief Summary / Impact Statement</label>
+                        <textarea id="project-desc" rows="3" placeholder="Briefly summarize activities, location, and beneficiaries..." required></textarea>
+                    </div>
+
+                    <div class="btn-actions-row" style="margin-top: 25px;">
+                        <button type="button" class="btn btn-secondary" onclick="closeProjectModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="project-submit-btn">Add Project</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Admin Dashboard Logic -->
+    <<script type="module" src="admin.js"></script>
+</body>
+</html>
