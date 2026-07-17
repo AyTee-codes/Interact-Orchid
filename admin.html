@@ -27,16 +27,35 @@
             </div>
             <form id="login-form" onsubmit="handleLogin(event)">
 
-    <form id="login-form" onsubmit="handleLogin(event)">
+<form id="login-form" onsubmit="handleLogin(event)">
 
-<div class="form-group">
-    <label for="login-email">Admin Email</label>
-    <input type="email" id="login-email" placeholder="admin@example.com" required>
-</div>
+    <div class="form-group">
+        <label for="login-email">Administrator Email</label>
+        <input
+            type="email"
+            id="login-email"
+            placeholder="admin@example.com"
+            required>
+    </div>
 
-<div class="form-group">
-    <label for="login-password">Administrative Password</label>
-    <input type="password" id="login-password" placeholder="••••••••" required>
+    <div class="form-group">
+        <label for="login-password">Administrative Password</label>
+        <input
+            type="password"
+            id="login-password"
+            placeholder="••••••••"
+            required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Authenticate
+    </button>
+
+</form>
+
+<div id="login-error" class="login-error-msg">
+    <i class="fas fa-exclamation-circle"></i>
+    Invalid email or password.
 </div>
 
 <button type="submit">
