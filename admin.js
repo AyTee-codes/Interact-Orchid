@@ -16,15 +16,19 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 let siteConfig = null;
 async function saveToFirebase() {
+    if (!siteConfig) {
+        throw new Error("siteConfig is null.");
+    }
+
     try {
         await setDoc(
-    doc(db,"config","portal"),
-    siteConfig,
-    { merge: true }
-);
-        console.log("Saved!");
-    } catch (e) {
-        console.error(e);
+            doc(db, "config", "portal"),
+            siteConfig,
+            { merge: true }
+        );
+    } catch (err) {
+        console.error("Firebase save failed:", err);
+        throw err;
     }
 }
 
@@ -141,7 +145,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Auth DOM Elements
     const loginOverlay = document.getElementById('login-overlay');
     const dashboardWrapper = document.getElementById('dashboard-wrapper');
-    const loginPassword = document.getElementById('login-password');
     const loginError = document.getElementById('login-error');
     checkAuth();
 
@@ -206,12 +209,15 @@ window.handleLogin = async function(event){
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-            siteConfig = docSnap.data();
-            siteConfig.members ??= [];
-            siteConfig.leaders ??= [];
-            siteConfig.resources ??= [];
-            siteConfig.projects ??= [];
-            siteConfig.branding ??= {};
+            const data = docSnap.data();
+
+siteConfig = {
+    branding: data.branding || {},
+    members: data.members || [],
+    leaders: data.leaders || [],
+    resources: data.resources || [],
+    projects: data.projects || []
+};
         } else {
             await fetchDefaultConfig();
             
@@ -259,7 +265,7 @@ window.handleLogin = async function(event){
         document.getElementById('color-gold').value = branding.goldColor || '#F39C12';
         document.getElementById('color-gold-text').value = branding.goldColor || '#F39C12';
 
-        document.getElementById('brand-password').value = branding.adminPassword || 'admin123';
+        
         document.getElementById('brand-footertext').value = branding.footerText || '';
         document.getElementById('brand-footerdesc').value = branding.footerDesc || '';
     }
@@ -278,14 +284,21 @@ window.handleLogin = async function(event){
             primaryColor: document.getElementById('color-primary').value,
             accentColor: document.getElementById('color-accent').value,
             goldColor: document.getElementById('color-gold').value,
-            adminPassword: document.getElementById('brand-password').value,
             footerText: document.getElementById('brand-footertext').value,
             footerDesc: document.getElementById('brand-footerdesc').value
         };
 
+        try {
         await saveToFirebase();
-        showToast("Branding & styling configurations updated successfully.");
-    };
+
+renderBrandingTable(siteConfig.Branding);
+closeMemberModal();
+showToast("Branding updated successfully.");
+    } catch (error) {
+        console.error(error);
+        showToast("Failed to save branding changes.", true);
+    }
+};
 
     /**
      * Renders tables for all segments
@@ -418,21 +431,33 @@ window.handleLogin = async function(event){
         if (memberId) {
             const index = siteConfig.members.findIndex(m => m.id === memberId);
             if (index !== -1) siteConfig.members[index] = memberData;
-            showToast("Member details updated successfully.");
+            
         } else {
             siteConfig.members ??= [];
-siteConfig.members.push(memberData);
+            siteConfig.members.push(memberData);
             showToast("New member successfully added.");
         }
+        try {
         await saveToFirebase();
-        renderMembersTable(siteConfig.members);
-        closeMemberModal();
-    };
+
+renderMembersTable(siteConfig.members);
+closeMemberModal();
+showToast("Member updated successfully.");
+    } catch (error) {
+        console.error(error);
+        showToast("Failed to save member changes.", true);
+    }
+};
 
     window.deleteMember = async function(memberId) {
         if (!confirm("Delete this team member?")) return;
         siteConfig.members = siteConfig.members.filter(m => m.id !== memberId);
-        await saveToFirebase();
+        try {
+            await saveToFirebase();
+        } catch (error) {
+            console.error(error);
+            showToast("Failed to delete member.", true);
+        }
         renderMembersTable(siteConfig.members);
         showToast("Member deleted.");
     };
@@ -510,22 +535,36 @@ siteConfig.members.push(memberData);
         if (id) {
             const index = siteConfig.leaders.findIndex(l => l.id === id);
             if (index !== -1) siteConfig.leaders[index] = leaderData;
-            showToast("Past Leader details updated.");
         } else {
             siteConfig.leaders ??= [];
-siteConfig.leaders.push(leaderData);
+            siteConfig.leaders.push(leaderData);
             showToast("New past leader added.");
         }
 
+        try {
         await saveToFirebase();
         renderLeadersTable(siteConfig.leaders);
-        closeLeaderModal();
-    };
+closeLeaderModal();
+        showToast("Leader updated successfully.");
+    } catch (error) {
+        console.error(error);
+        showToast("Failed to save leader changes.", true);
+    }
+};
 
     window.deleteLeader = async function(id) {
         if (!confirm("Delete this leader record?")) return;
         siteConfig.leaders = siteConfig.leaders.filter(l => l.id !== id);
-        await saveToFirebase();
+        try {
+    await saveToFirebase();
+} catch(err){
+    console.error(err);
+    showToast("Failed to delete leader.", true);
+    return;
+}
+
+renderLeadersTable(siteConfig.leaders);
+showToast("Leader deleted.");
         renderLeadersTable(siteConfig.leaders);
         showToast("Leader record deleted.");
     };
@@ -600,22 +639,34 @@ siteConfig.leaders.push(leaderData);
         if (id) {
             const index = siteConfig.resources.findIndex(r => r.id === id);
             if (index !== -1) siteConfig.resources[index] = resData;
-            showToast("Resource details updated.");
+            
         } else {
             siteConfig.resources ??= [];
         siteConfig.resources.push(resData);
             showToast("New resource document added.");
         }
 
+        try {
         await saveToFirebase();
         renderResourcesTable(siteConfig.resources);
-        closeResourceModal();
-    };
+closeResourceModal();
+        showToast("Resource updated successfully.");
+    } catch (error) {
+        console.error(error);
+        showToast("Failed to save resource changes.", true);
+    }
+};
 
     window.deleteResource = async function(id) {
         if (!confirm("Delete this resource file?")) return;
         siteConfig.resources = siteConfig.resources.filter(r => r.id !== id);
-        await saveToFirebase();
+        try {
+            await saveToFirebase();
+        } catch (error) {
+            console.error(error);
+            showToast("Failed to delete resource.", true);
+            return;
+        }
         renderResourcesTable(siteConfig.resources);
         showToast("Resource document removed.");
     };
@@ -730,22 +781,33 @@ if (proj) {
         if (id) {
             const index = siteConfig.projects.findIndex(p => p.id === id);
             if (index !== -1) siteConfig.projects[index] = projData;
-            showToast("Project details updated.");
+            
         } else {
             siteConfig.projects ??= [];
             siteConfig.projects.push(projData);
             showToast("New service project added.");
         }
 
+        try {
         await saveToFirebase();
         renderProjectsTable(siteConfig.projects);
-        closeProjectModal();
-    };
+closeProjectModal();
+        showToast("Project updated successfully.");
+    } catch (error) {
+        console.error(error);
+        showToast("Failed to save project changes.", true);
+    }
+};
 
     window.deleteProject =async function(id) {
         if (!confirm("Delete this project?")) return;
         siteConfig.projects = siteConfig.projects.filter(p => p.id !== id);
-        await saveToFirebase();
+        try {
+            await saveToFirebase();
+        } catch (error) {
+            console.error(error);
+            showToast("Failed to delete project.", true);
+        }
         renderProjectsTable(siteConfig.projects);
         showToast("Project record deleted.");
     };
