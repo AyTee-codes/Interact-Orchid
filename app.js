@@ -3,7 +3,10 @@
  * Dynamically loads configuration (branding, members, leaders, resources, projects)
  * and manages routing tabs, searching, sorting, detail modals, and themes.
  */
-import { db } from "./firebase.js";
+import { db, auth } from "./firebase.js?v=2";
+
+console.log("APP JS STARTED", db, auth);
+
 import {
     doc,
     getDoc

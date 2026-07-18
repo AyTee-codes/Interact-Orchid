@@ -26,17 +26,24 @@
                 <p>This area is restricted. Enter password to gain dashboard access.</p>
             </div>
             <form id="login-form" onsubmit="handleLogin(event)">
-                <div class="form-group">
-                    <label for="login-password">Administrative Password</label>
-                    <input type="password" id="login-password" placeholder="••••••••" required>
-                </div>
-                <div id="login-error" class="login-error-msg">
-                    <i class="fas fa-exclamation-circle"></i> Invalid administrative password.
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 15px;">
-                    <i class="fas fa-sign-in-alt"></i> Authenticate
-                </button>
-            </form>
+
+    <form id="login-form" onsubmit="handleLogin(event)">
+
+<div class="form-group">
+    <label for="login-email">Admin Email</label>
+    <input type="email" id="login-email" placeholder="admin@example.com" required>
+</div>
+
+<div class="form-group">
+    <label for="login-password">Administrative Password</label>
+    <input type="password" id="login-password" placeholder="••••••••" required>
+</div>
+
+<button type="submit">
+Authenticate
+</button>
+
+</form>
             <div class="login-footer">
                 <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Public Portal</a>
             </div>
@@ -157,8 +164,9 @@
                         </div>
                         <div class="form-grid">
                             <div class="form-group">
-                                <label for="brand-password">Dashboard Password</label>
-                                <input type="text" id="brand-password" placeholder="Change administrator password" required>
+                                <p>
+Admin credentials are managed securely through Firebase Authentication.
+</p>
                                 <span class="upload-tip">Default: admin123. Keep this safe. Changes apply to subsequent log-ins.</span>
                             </div>
                         </div>
@@ -521,6 +529,6 @@
     </div>
 
     <!-- Admin Dashboard Logic -->
-    <<script type="module" src="admin.js"></script>
+    <script type="module" src="admin.js"></script>
 </body>
 </html>

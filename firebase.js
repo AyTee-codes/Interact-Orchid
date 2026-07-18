@@ -3,7 +3,11 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebas
 import { getFirestore } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 import { getAuth } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
-
+import { 
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyB1aG6QpOj9hPyC_saj_q41t1GGU9uQpkA",

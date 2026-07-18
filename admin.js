@@ -2,7 +2,12 @@
  * Interact Nepal Web Portal - Admin Dashboard Engine
  * Handles CRUD for members, leaders, resources, projects, branding, and credentials.
  */
-import { db } from "./firebase.js";
+import { db, auth } from "./firebase.js";
+import {
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
 import {
     doc,
@@ -138,26 +143,30 @@ document.addEventListener('DOMContentLoaded', async () => {
     const dashboardWrapper = document.getElementById('dashboard-wrapper');
     const loginPassword = document.getElementById('login-password');
     const loginError = document.getElementById('login-error');
-    await loadConfiguration();
-checkAuth();
-    
-    function checkAuth() {
-        if (sessionStorage.getItem('admin_authenticated') === 'true') {
-            if (loginOverlay) loginOverlay.style.display = 'none';
-            if (dashboardWrapper) dashboardWrapper.style.display = 'block';
-        } else {
-            if (loginOverlay) loginOverlay.style.display = 'flex';
-            if (dashboardWrapper) dashboardWrapper.style.display = 'none';
+    checkAuth();
+
+function checkAuth() {
+    onAuthStateChanged(auth, async (user) => {
+        if(user){
+            loginOverlay.style.display = "none";
+            dashboardWrapper.style.display = "block";
+
+            await loadConfiguration();
+        }else{
+            loginOverlay.style.display = "flex";
+            dashboardWrapper.style.display = "none";
         }
-    }
+    });
+}
    
 
-    // Login Form Submit Handler
-    window.handleLogin = async function(event) {
+  // Login Form Submit Handler
+window.handleLogin = async function(event){
+
     event.preventDefault();
 
     const email = document.getElementById("login-email").value;
-    const password = loginPassword.value;
+    const password = document.getElementById("login-password").value;
 
     try {
 
@@ -167,26 +176,28 @@ checkAuth();
             password
         );
 
-        loginOverlay.style.display = "none";
-        dashboardWrapper.style.display = "block";
+        loginError.style.display = "none";
 
-    } catch(error) {
+    } catch(error){
 
         console.error(error);
 
-        loginError.textContent =
-        "Invalid email or password";
-
-        loginError.style.display = "block";
+       if(error.code === "auth/invalid-credential"){
+        loginError.innerHTML =
+        "Invalid email or password.";
     }
+    else{
+        loginError.innerHTML =
+        "Something went wrong. Try again.";
+    }
+
+    loginError.style.display="block";
+}
 };
     // Logout Handler
-    window.handleLogout = function() {
-        sessionStorage.removeItem('admin_authenticated');
-        checkAuth();
-        if (loginPassword) loginPassword.value = '';
-        if (loginError) loginError.style.display = 'none';
-    };
+   window.handleLogout = async function(){
+    await signOut(auth);
+   };
 
     // Initialize config
     async function loadConfiguration() {
@@ -772,17 +783,15 @@ if (proj) {
             try {
                 const importedData = JSON.parse(e.target.result);
                 
-                if (!importedData.branding || !importedData.members) {if (
+                if (
     !importedData.branding ||
     !Array.isArray(importedData.members) ||
     !Array.isArray(importedData.leaders) ||
     !Array.isArray(importedData.resources) ||
     !Array.isArray(importedData.projects)
 ) {
-
+    throw new Error("Invalid format.");
 }
-                    throw new Error("Invalid format.");
-                }
 
                 siteConfig = importedData;
                 await saveToFirebase();
