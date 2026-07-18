@@ -274,32 +274,27 @@ siteConfig = {
      * Saves branding changes to the current configuration state
      */
     window.saveBranding = async function(event) {
-        event.preventDefault();
-        if (!siteConfig) return;
+    event.preventDefault();
 
-        siteConfig.branding = {
-            siteName: document.getElementById('brand-sitename').value,
-            logoUrl: document.getElementById('brand-logourl').value,
-            themeLogoUrl: document.getElementById('brand-themelogourl').value,
-            primaryColor: document.getElementById('color-primary').value,
-            accentColor: document.getElementById('color-accent').value,
-            goldColor: document.getElementById('color-gold').value,
-            footerText: document.getElementById('brand-footertext').value,
-            footerDesc: document.getElementById('brand-footerdesc').value
-        };
+    siteConfig.branding = {
+        siteName: document.getElementById("brand-sitename").value,
+        logoUrl: document.getElementById("brand-logourl").value,
+        themeLogoUrl: document.getElementById("brand-themelogourl").value,
+        primaryColor: document.getElementById("color-primary").value,
+        accentColor: document.getElementById("color-accent").value,
+        goldColor: document.getElementById("color-gold").value,
+        footerText: document.getElementById("brand-footertext").value,
+        footerDesc: document.getElementById("brand-footerdesc").value
+    };
 
-        try {
+    try {
         await saveToFirebase();
-
-renderBrandingTable(siteConfig.Branding);
-closeMemberModal();
-showToast("Branding updated successfully.");
-    } catch (error) {
-        console.error(error);
-        showToast("Failed to save branding changes.", true);
+        showToast("Branding updated successfully.");
+    } catch (err) {
+        console.error(err);
+        showToast("Failed to save branding.", true);
     }
 };
-
     /**
      * Renders tables for all segments
      */
@@ -425,7 +420,9 @@ showToast("Branding updated successfully.");
             email: memberEmailInput.value,
             facebook: memberFbInput.value,
             instagram: memberIgInput.value,
-            image: selectedPhotoBase64 || memberImgurlInput.value || 'https://interactnepal.org/images/default-user.png'
+            image: selectedPhotoBase64 ||
+       memberImgurlInput.value ||
+       "images/favicon.png"
         };
 
         if (memberId) {
@@ -775,7 +772,9 @@ if (proj) {
             club: projectClubInput.value,
             date: projectDateInput.value,
             desc: projectDescInput.value,
-            image: selectedProjectPhotoBase64 || projectImgurlInput.value || 'https://interactnepal.org/images/theme.png'
+            image: selectedProjectPhotoBase64 ||
+       projectImgurlInput.value ||
+       "images/theme.png"
         };
 
         if (id) {
